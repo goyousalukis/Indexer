@@ -68,7 +68,7 @@ cpdefine("inline:com-chilipeppr-indexer", ["chilipeppr_ready"], function() {
                 setTimeout(function() { $(window).trigger('resize'); }, 100);
             });
             this.loadXYZWidget();
-            
+            this.loadDegreeIndexerWidget();
             this.loadTemplateWidget();
             
             // Create our workspace upper right corner triangle menu
@@ -171,7 +171,31 @@ cpdefine("inline:com-chilipeppr-indexer", ["chilipeppr_ready"], function() {
                 }
             );
         },
-                /**
+        /**
+         * Load my degreeindexer widget
+         */
+        loadDegreeIndexerWidget: function(callback) {
+            chilipeppr.load(
+                "#net-mydomain-widget-degreeindexer-instance",
+                "http://raw.githubusercontent.com/goyousalukis/widget-degree-indexer/master/auto-generated-widget.html",
+                function() {
+                    // Callback after widget loaded into #myDivNetMydomainWidgetDegreeindexer
+                    // Now use require.js to get reference to instantiated widget
+                    cprequire(
+                        ["inline:net-mydomain-widget-degreeindexer"], // the id you gave your widget
+                        function(myObjNetMydomainWidgetDegreeindexer) {
+                            // Callback that is passed reference to the newly loaded widget
+                            console.log("Widget / degreeindexer just got loaded.", myObjNetMydomainWidgetDegreeindexer);
+                            myObjNetMydomainWidgetDegreeindexer.init();
+                        }
+                    );
+                }
+            );
+        },
+        
+        
+        
+        /**
          * Load the XYZ widget via chilipeppr.load()
          */
         loadXYZWidget: function(callback) {
