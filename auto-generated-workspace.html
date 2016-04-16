@@ -161,8 +161,7 @@ cpdefine("inline:com-chilipeppr-indexer", ["chilipeppr_ready"], function() {
             });
             this.loadXYZWidget();
             this.loadDegreeIndexerWidget();
-            this.loadTemplateWidget();
-            
+
             // Create our workspace upper right corner triangle menu
             this.loadWorkspaceMenu();
             // Add our billboard to the menu (has name, url, picture of workspace)
@@ -207,29 +206,6 @@ cpdefine("inline:com-chilipeppr-indexer", ["chilipeppr_ready"], function() {
          */
         onResize: function() {
             if (this.widgetConsole) this.widgetConsole.resize();
-        },
-        /**
-         * Load the Template widget via chilipeppr.load() so folks have a sample
-         * widget they can fork as a starting point for their own.
-         */
-        loadTemplateWidget: function(callback) {
-
-            chilipeppr.load(
-                "#com-chilipeppr-widget-template-instance",
-                "http://raw.githubusercontent.com/chilipeppr/widget-template/master/auto-generated-widget.html",
-                function() {
-                    // Callback after widget loaded into #myDivWidgetTemplate
-                    // Now use require.js to get reference to instantiated widget
-                    cprequire(
-                        ["inline:com-chilipeppr-widget-template"], // the id you gave your widget
-                        function(myObjWidgetTemplate) {
-                            // Callback that is passed reference to the newly loaded widget
-                            console.log("Widget / Template just got loaded.", myObjWidgetTemplate);
-                            myObjWidgetTemplate.init();
-                        }
-                    );
-                }
-            );
         },
         /**
          * Load the Serial Port JSON Server widget via chilipeppr.load()
@@ -390,7 +366,7 @@ cpdefine("inline:com-chilipeppr-indexer", ["chilipeppr_ready"], function() {
                 <!-- Left Column -->
                 <!-- Change the width by adjusting col-md-4 to be col-md-3 for skinnier, or col-md-5 for wider -->
                 <!-- You must have all columns add up to 12 since we use bootstrap's col-md technique, i.e. col-md-2, col-md-7, col-md-3 adds to 12 -->
-                <div class="col-md-4 col-pad10">
+                <div class="col-md-6 col-pad10">
 
                     <div class="com-chilipeppr-ws-hdr well">
                         
@@ -420,40 +396,23 @@ cpdefine("inline:com-chilipeppr-indexer", ["chilipeppr_ready"], function() {
                         <p class="sample">XtYZ Widget Goes Here</p>
                     </div>
                     
-                    <div id="com-chilipeppr-widget-template-instance">
-                        <p class="sample">Template Widget goes here</p>
-                    </div>
-
                     <div id="com-chilipeppr-widget-spconsole-instance">
                         Serial Port Console goes here.
                     </div>
 
                 </div>
 
-                <!-- Center Column -->
-                <div class="col-md-5 col-pad10">
+                <!-- Right Column -->
+                <div class="col-md-6 col-pad10">
                     <div id="net-mydomain-widget-degreeindexer-instance">
                         <p class="sample" style="min-height:200px;">Degree Indexer goes here</p>
                     </div>
                 </div>
                 
-                <div class="col-md-5 col-pad10">
-                    <div id="mywidget2-instance">
-                        <p class="sample" style="min-height:200px;">Widget 2 goes here</p>
-                    </div>
+                <div id="com-chilipeppr-widget-serialport-instance">
+                    Widget 3 goes here
                 </div>
-
-                <!-- Right Column -->
-                <div class="col-md-3 col-pad10">
-                    
-                    <div id="com-chilipeppr-widget-serialport-instance">
-                        Widget 3 goes here
-                    </div>
-                    
-                    <div id="mywidget3-instance">
-                        <p class="sample">Widget 3 goes here</p>
-                    </div>
-
+                
                 </div>
 
             </div>
